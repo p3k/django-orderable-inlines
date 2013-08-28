@@ -1,3 +1,4 @@
+
 (function($){
 
     function parseOrderableFieldName(className){
@@ -82,7 +83,7 @@
                 }
 
                 // fix the zebra stripes
-                $tr.removeClass('row1 row1');
+                $tr.removeClass('row1 row2');
                 $tr.addClass('row'+((i%2)+1));
             });
         };
@@ -100,6 +101,9 @@
         $('fieldset.orderable-stacked').each(setupStackedFieldset);
         $('.orderable-stacked-inline-group').each(setupStackedInlineGroup);
         $('fieldset.orderable-tabular tbody').each(setupTabularTBody);
+        $('fieldset.orderable-tabular tbody').live('click', '.add-row a', function() {
+          $('fieldset.orderable-tabular tbody').each(setupTabularTBody);
+        });
     });
 
 })(django.jQuery);
